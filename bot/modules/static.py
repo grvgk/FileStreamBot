@@ -1,36 +1,35 @@
 WelcomeText = \
-"""\
-Hi **%(first_name)s**, send me a file to instantly generate file links.
+"""
+Hi **%(first_name)s**, send me a file or add me as an admin to any channel to instantly generate file links.
 
-**Commands:**
-/privacy - View bot's privacy policy.
-/log - Get bot's log file. (owner only)
-/help - Show this message.
+Add me to your channel to instantly generate links for any downloadable media. Once received, I will automatically attach appropriate buttons to the post containing the URL. If you want me to ignore a given post, you can insert `#pass` in the post.
+
+- /start to get this message.
+- /info to get user info.
+- /log to get bot logs. (admin only!)
 """
 
-PrivacyText = \
+UserInfoText = \
 """
-**Privacy Policy**
+**First Name:**
+`{sender.first_name}`
 
-**1.Data Storage:** Files you upload/send are securely saved in the bot's private Telegram channel.
+**Last Name:**
+`{sender.last_name}`
 
-**2.Download Links:** Links include a secret code to prevent unauthorized access.
+**User ID:**
+`{sender.id}`
 
-**3.User Control:** You can revoke links anytime using the "Revoke" button.
-
-**4.Moderation:** The bot owner can view and delete your files if necessary.
-
-**5.Open Source:** The bot is [open source](https://github.com/TheCaduceus/FileStreamBot). Deploy your own instance for maximum privacy.
-
-**6.Retention:** Files are stored until you revoke their links.
-
-__By using this bot, you agree to this policy.__
+**Username:**
+`@{sender.username}`
 """
 
 FileLinksText = \
 """
 **Download Link:**
 `%(dl_link)s`
+**Telegram File:**
+`%(tg_link)s`
 """
 
 MediaLinksText = \
@@ -39,6 +38,8 @@ MediaLinksText = \
 `%(dl_link)s`
 **Stream Link:**
 `%(stream_link)s`
+**Telegram File:**
+`%(tg_link)s`
 """
 
 InvalidQueryText = \
@@ -61,7 +62,7 @@ InvalidPayloadText = \
 Invalid payload.
 """
 
-UserNotInAllowedList = \
+MediaTypeNotSupportedText = \
 """
-You are not allowed to use this bot.
+Sorry, this media type is not supported.
 """
