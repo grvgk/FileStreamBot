@@ -23,22 +23,22 @@
 
 <a name="i-1"></a>
 
-**1.Install Python & Git:**
+**1.Install Python & Git :**
 
-For Windows:
+For Windows :
 ```
 winget install Python.Python.3.11
 winget install Git.Git
 ```
-For Linux:
+For Linux :
 ```
 sudo apt-get update && sudo apt-get install -y python3.11 git pip
 ```
-For macOS:
+For macOS :
 ```
 brew install python@3.11 git
 ```
-For Termux:
+For Termux :
 ```
 pkg install python -y
 pkg install git -y
@@ -46,12 +46,12 @@ pkg install git -y
 
 <a name="i-2"></a>
 
-**2.Download repository:**
+**2.Download repository :**
 ```
 git clone https://github.com/GRVGK7/FileStreamBot.git
 ```
 
-**3.Change Directory:**
+**3.Change Directory :**
 
 ```
 cd FileStreamBot
@@ -59,7 +59,7 @@ cd FileStreamBot
 
 <a name="i-3"></a>
 
-**4.Install requirements:**
+**4.Install requirements :**
 
 ```
 pip install -r requirements.txt
@@ -68,7 +68,7 @@ pip install -r requirements.txt
 <a name="variables"></a>
 
 ## 📝 Variables
-**The variables provided below should either be completed within the [config.py](https://github.com/TheCaduceus/FileStreamBot/blob/main/bot/config.py) file or configured as environment variables.**
+**The variables provided below should either be completed within the [config.py](https://github.com/GRVGK7/FileStreamBot/blob/main/bot/config.py) file or configured as environment variables.**
 * `API_ID`|`TELEGRAM_API_ID`: API ID of your Telegram account, can be obtained from [My Telegram](https://my.telegram.org). `int`
 * `API_HASH`|`TELEGRAM_API_HASH`: API hash of your Telegram account, can be obtained from [My Telegram](https://my.telegram.org). `str`
 * `OWNER_ID`: ID of your Telegram account, can be obtained by sending **/info** to [@strm7bot](https://t.me/strm7bot). `int`
@@ -86,14 +86,14 @@ pip install -r requirements.txt
 
 <a name="d-1"></a>
 
-**1.Running locally:**
+**1.Running locally :**
 ```
 python -m bot
 ```
 
 <a name="d-2"></a>
 
-**2.Using Docker:** *(Recommended)*
+**2.Using Docker :** *(Recommended)*
 * Build own Docker image:
 ```
 docker build -t file-stream-bot .
@@ -112,4 +112,4 @@ docker run -p 8080:8080 file-stream-bot
 
 ## ❤️ Credits & Thanks
 
-[**Dr.Caduceus**](https://github.com/TheCaduceus): Owner & developer of File Stream Bot.
+[**sᴠɴ**](https://github.com/GRVGK7): Owner & developer of File Stream Bot.
