@@ -53,7 +53,7 @@ def get_file_properties(message: Message):
                 break
         
         if not media:
-            abort(400, 'Invalid media type.')
+            abort(400, 'ɪɴᴠᴀʟɪᴅ ᴍᴇᴅɪᴀ ᴛʏᴘᴇ.')
 
         date = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         file_name = f'{file_type}-{date}.{file_format}'
