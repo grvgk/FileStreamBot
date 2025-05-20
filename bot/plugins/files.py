@@ -32,20 +32,19 @@ async def user_file_handler(event: NewMessage.Event | Message):
                 ],
                 [
                     Button.url('ɢᴇᴛ ғɪʟᴇ', tg_link),
-                    Button.inline('Revoke', f'rm_{message_id}_{secret_code}')
+                    Button.inline('ʀᴇᴠᴏᴋᴇ', f'rm_{message_id}_{secret_code}')
                 ]
             ]
         )
     else:
         await event.reply(
-            message=FileLinksText % {'dl_link': dl_link, 'tg_link': tg_link, 'stream_link': stream_link},
+            message=FileLinksText % {'dl_link': dl_link, 'tg_link': tg_link},
             buttons=[
                 [
                     Button.url('ᴅᴏᴡɴʟᴏᴀᴅ', dl_link),
-                    Button.url('sᴛʀᴇᴀᴍ', stream_link)
+                    Button.url('ɢᴇᴛ ғɪʟᴇ', tg_link)
                 ],
                 [
-                    Button.url('ɢᴇᴛ ғɪʟᴇ', tg_link),
                     Button.inline('ʀᴇᴠᴏᴋᴇ', f'rm_{message_id}_{secret_code}')
                 ]
             ]
@@ -85,8 +84,7 @@ async def channel_file_handler(event: NewMessage.Event | Message):
         try:
             await event.edit(
                 buttons=[
-                    [Button.url("ᴅᴏᴡɴʟᴏᴀᴅ", dl_link), Button.url("sᴛʀᴇᴀᴍ", stream_link)],
-                    [Button.url("ɢᴇᴛ ғɪʟᴇ", tg_link)],
+                    [Button.url("ᴅᴏᴡɴʟᴏᴀᴅ", dl_link), Button.url("ɢᴇᴛ ғɪʟᴇ", tg_link)],
                 ]
             )
         except (
