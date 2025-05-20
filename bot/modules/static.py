@@ -1,68 +1,71 @@
 WelcomeText = \
 """
-Hi **%(first_name)s**, send me a file or add me as an admin to any channel to instantly generate file links.
+ʜɪɪɪ **%(first_name)s**, sᴇɴᴅ ᴍᴇ ᴀ ғɪʟᴇ ᴏʀ ᴀᴅᴅ ᴍᴇ ᴀs ᴀɴ ᴀᴅᴍɪɴ ᴛᴏ ᴀɴʏ ᴄʜᴀɴɴᴇʟ ᴛᴏ ɪɴsᴛᴀɴᴛʟʏ ɢᴇɴᴇʀᴀᴛᴇ ғɪʟᴇ ʟɪɴᴋs.
 
-Add me to your channel to instantly generate links for any downloadable media. Once received, I will automatically attach appropriate buttons to the post containing the URL. If you want me to ignore a given post, you can insert `#pass` in the post.
+ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ ᴛᴏ ɪɴsᴛᴀɴᴛʟʏ ɢᴇɴᴇʀᴀᴛᴇ ʟɪɴᴋs ғᴏʀ ᴀɴʏ ᴅᴏᴡɴʟᴏᴀᴅᴀʙʟᴇ ᴍᴇᴅɪᴀ. ᴏɴᴄᴇ ʀᴇᴄᴇɪᴠᴇᴅ, ɪ ᴡɪʟʟ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴀᴛᴛᴀᴄʜ ᴀᴘᴘʀᴏᴘʀɪᴀᴛᴇ ʙᴜᴛᴛᴏɴs ᴛᴏ ᴛʜᴇ ᴘᴏsᴛ ᴄᴏɴᴛᴀɪɴɪɴɢ ᴛʜᴇ ᴜʀʟ. ɪғ ʏᴏᴜ ᴡᴀɴᴛ ᴍᴇ ᴛᴏ ɪɢɴᴏʀᴇ ᴀ ɢɪᴠᴇɴ ᴘᴏsᴛ, ʏᴏᴜ ᴄᴀɴ ɪɴsᴇʀᴛ `#pass` ɪɴ ᴛʜᴇ ᴘᴏsᴛ.
 
 - /start to get this message.
 - /info to get user info.
-- /log to get bot logs. (admin only!)
+- /log to get bot logs. (admin only !)
 """
 
 UserInfoText = \
 """
-**First Name:**
+**ғɪʀsᴛ ɴᴀᴍᴇ :**
 `{sender.first_name}`
 
-**Last Name:**
+**ʟᴀsᴛ ɴᴀᴍᴇ :**
 `{sender.last_name}`
 
-**User ID:**
+**ᴜsᴇʀ ɪᴅ :**
 `{sender.id}`
 
-**Username:**
+**ᴜsᴇʀɴᴀᴍᴇ :**
 `@{sender.username}`
 """
 
 FileLinksText = \
 """
-**Download Link:**
+**ᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :**
 `%(dl_link)s`
-**Telegram File:**
+
+**ᴛᴇʟᴇɢʀᴀᴍ ғɪʟᴇ :**
 `%(tg_link)s`
 """
 
 MediaLinksText = \
 """
-**Download Link:**
+**ᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :**
 `%(dl_link)s`
-**Stream Link:**
+
+**sᴛʀᴇᴀᴍ ʟɪɴᴋ :**
 `%(stream_link)s`
-**Telegram File:**
+
+**ᴛᴇʟᴇɢʀᴀᴍ ғɪʟᴇ :**
 `%(tg_link)s`
 """
 
 InvalidQueryText = \
 """
-Query data mismatched.
+ᴏ̨ᴜᴇʀʏ ᴅᴀᴛᴀ ᴍɪsᴍᴀᴛᴄʜᴇᴅ.
 """
 
 MessageNotExist = \
 """
-File revoked or not exist.
+ғɪʟᴇ ʀᴇᴠᴏᴋᴇᴅ ᴏʀ ɴᴏᴛ ᴇxɪsᴛ.
 """
 
 LinkRevokedText = \
 """
-The link has been revoked. It may take some time for the changes to take effect.
+ᴛʜᴇ ʟɪɴᴋ ʜᴀs ʙᴇᴇɴ ʀᴇᴠᴏᴋᴇᴅ. ɪᴛ ᴍᴀʏ ᴛᴀᴋᴇ sᴏᴍᴇ ᴛɪᴍᴇ ғᴏʀ ᴛʜᴇ ᴄʜᴀɴɢᴇs ᴛᴏ ᴛᴀᴋᴇ ᴇғғᴇᴄᴛ.
 """
 
 InvalidPayloadText = \
 """
-Invalid payload.
+ɪɴᴠᴀʟɪᴅ ᴘᴀʏʟᴏᴀᴅ.
 """
 
 MediaTypeNotSupportedText = \
 """
-Sorry, this media type is not supported.
+sᴏʀʀʏ, ᴛʜɪs ᴍᴇᴅɪᴀ ᴛʏᴘᴇ ɪs ɴᴏᴛ sᴜᴘᴘᴏʀᴛᴇᴅ.
 """
