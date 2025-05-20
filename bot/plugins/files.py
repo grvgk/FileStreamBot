@@ -24,28 +24,29 @@ async def user_file_handler(event: NewMessage.Event | Message):
     if (event.document and 'video' in event.document.mime_type) or event.video:
         stream_link = f'{Server.BASE_URL}/stream/{message_id}?code={secret_code}'
         await event.reply(
-            message= MediaLinksText % {'dl_link': dl_link, 'tg_link': tg_link, 'tg_link': tg_link, 'stream_link': stream_link},
+            message= MediaLinksText % {'dl_link': dl_link, 'tg_link': tg_link, 'stream_link': stream_link},
             buttons=[
                 [
-                    Button.url('Download', dl_link),
-                    Button.url('Stream', stream_link)
+                    Button.url('ᴅᴏᴡɴʟᴏᴀᴅ', dl_link),
+                    Button.url('sᴛʀᴇᴀᴍ', stream_link)
                 ],
                 [
-                    Button.url('Get File', deep_link),
+                    Button.url('ɢᴇᴛ ғɪʟᴇ', tg_link),
                     Button.inline('Revoke', f'rm_{message_id}_{secret_code}')
                 ]
             ]
         )
     else:
         await event.reply(
-            message=FileLinksText % {'dl_link': dl_link, 'tg_link': tg_link},
+            message=FileLinksText % {'dl_link': dl_link, 'tg_link': tg_link, 'stream_link': stream_link},
             buttons=[
                 [
-                    Button.url('Download', dl_link),
-                    Button.url('Get File', deep_link)
+                    Button.url('ᴅᴏᴡɴʟᴏᴀᴅ', dl_link),
+                    Button.url('sᴛʀᴇᴀᴍ', stream_link)
                 ],
                 [
-                    Button.inline('Revoke', f'rm_{message_id}_{secret_code}')
+                    Button.url('ɢᴇᴛ ғɪʟᴇ', tg_link),
+                    Button.inline('ʀᴇᴠᴏᴋᴇ', f'rm_{message_id}_{secret_code}')
                 ]
             ]
         )
@@ -70,8 +71,8 @@ async def channel_file_handler(event: NewMessage.Event | Message):
         try:
             await event.edit(
                 buttons=[
-                    [Button.url("Download", dl_link), Button.url("Stream", stream_link)],
-                    [Button.url("Get File", tg_link)],
+                    [Button.url("ᴅᴏᴡɴʟᴏᴀᴅ", dl_link), Button.url("sᴛʀᴇᴀᴍ", stream_link)],
+                    [Button.url("ɢᴇᴛ ғɪʟᴇ", tg_link)],
                 ]
             )
         except (
@@ -84,7 +85,8 @@ async def channel_file_handler(event: NewMessage.Event | Message):
         try:
             await event.edit(
                 buttons=[
-                    [Button.url("Download", dl_link), Button.url("Get File", tg_link)]
+                    [Button.url("ᴅᴏᴡɴʟᴏᴀᴅ", dl_link), Button.url("sᴛʀᴇᴀᴍ", stream_link)],
+                    [Button.url("ɢᴇᴛ ғɪʟᴇ", tg_link)],
                 ]
             )
         except (
