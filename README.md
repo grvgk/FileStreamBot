@@ -1,7 +1,7 @@
 <div align="center"><h1>🌐File Stream Bot</h1>
 <b>An open-source Python Telegram bot to transmit Telegram files over HTTP.</b>
 
-<a href="https://t.me/strm7bot"><b>Demo Bot</b></a>
+<a href="https://t.me/strm_7bot"><b>Demo Bot</b></a>
 </div><br>
 
 ## **📑 INDEX**
@@ -48,7 +48,7 @@ pkg install git -y
 
 **2.Download repository :**
 ```
-git clone https://github.com/GRVGK7/FileStreamBot.git
+git clone https://github.com/svnig7/FileStreamBot.git
 ```
 
 **3.Change Directory :**
@@ -68,10 +68,10 @@ pip install -r requirements.txt
 <a name="variables"></a>
 
 ## 📝 Variables
-**The variables provided below should either be completed within the [config.py](https://github.com/GRVGK7/FileStreamBot/blob/main/bot/config.py) file or configured as environment variables.**
+**The variables provided below should either be completed within the [config.py](https://github.com/svnig7/FileStreamBot/blob/main/bot/config.py) file or configured as environment variables.**
 * `API_ID`|`TELEGRAM_API_ID`: API ID of your Telegram account, can be obtained from [My Telegram](https://my.telegram.org). `int`
 * `API_HASH`|`TELEGRAM_API_HASH`: API hash of your Telegram account, can be obtained from [My Telegram](https://my.telegram.org). `str`
-* `OWNER_ID`: ID of your Telegram account, can be obtained by sending **/info** to [@strm7bot](https://t.me/strm7bot). `int`
+* `OWNER_ID`: ID of your Telegram account, can be obtained by sending **/info** to [@strm_7bot](https://t.me/strm_7bot). `int`
 * `ALLOWED_USER_IDS`: A list of Telegram account IDs (separated by spaces) that are permitted to use the bot. Leave this field empty to allow anyone to use it. `str`
 * `BOT_USERNAME`|`TELEGRAM_BOT_USERNAME`: Username of your Telegram bot, create one using [@BotFather](https://t.me/BotFather). `str`
 * `BOT_TOKEN`|`TELEGRAM_BOT_TOKEN`: Telegram API token of your bot, can be obtained from [@BotFather](https://t.me/BotFather). `str`
@@ -112,4 +112,4 @@ docker run -p 8080:8080 file-stream-bot
 
 ## ❤️ Credits & Thanks
 
-[**sᴠɴ**](https://github.com/GRVGK7) : Owner & developer of File Stream Bot.
+[**sᴠɴ**](https://github.com/svnig7) : Owner & developer of File Stream Bot.
