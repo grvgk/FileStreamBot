@@ -29,7 +29,7 @@ FileLinksText = \
 """
 **ᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :** `%(dl_link)s`
 
-**ᴛᴇʟᴇɢʀᴀᴍ ғɪʟᴇ :** `%(tg_link)s`
+**ғɪʟᴇ ʟɪɴᴋ :** `%(tg_link)s`
 """
 
 MediaLinksText = \
@@ -38,7 +38,7 @@ MediaLinksText = \
 
 **sᴛʀᴇᴀᴍ ʟɪɴᴋ :** `%(stream_link)s`
 
-**ᴛᴇʟᴇɢʀᴀᴍ ғɪʟᴇ :** `%(tg_link)s`
+**ғɪʟᴇ ʟɪɴᴋ :** `%(tg_link)s`
 """
 
 InvalidQueryText = \
