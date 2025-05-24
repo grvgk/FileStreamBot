@@ -1,7 +1,7 @@
 from pyrogram.types import Message
 from datetime import datetime
 from mimetypes import guess_type
-from bot import app  # Your Pyrogram Client instance
+from bot import TelegramBot
 from bot.config import Telegram
 from bot.server.error import abort
 
