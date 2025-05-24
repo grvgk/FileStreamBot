@@ -6,7 +6,7 @@ from bot.modules.static import *
 from bot.modules.decorators import verify_user
 
 @app.on_message(filters.private & filters.command("start"))
-@verify_user(private=True)
+# @verify_user(private=True)
 async def welcome(client, message: Message):
     await message.reply(
         text=WelcomeText % {'first_name': message.from_user.first_name},
