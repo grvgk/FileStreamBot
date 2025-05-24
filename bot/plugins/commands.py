@@ -7,9 +7,10 @@ from bot.modules.decorators import verify_user
 from bot import logger
 
 @app.on_message(filters.private & filters.command("start"))
+@verify_user(private=True)
 async def welcome(client, message: Message):
-    logger.info(f"Received /start from {message.from_user.id}")
-    await message.reply("Bot is working!")
+    print("Start command triggered")  # Add this
+    ...
 
 @app.on_message(filters.private & filters.command("info"))
 # @verify_user(private=True)
