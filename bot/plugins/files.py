@@ -1,95 +1,103 @@
-from telethon import Button
-from telethon.events import NewMessage
-from telethon.errors import MessageAuthorRequiredError, MessageNotModifiedError, MessageIdInvalidError
-from telethon.tl.custom import Message
+from pyrogram import filters
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from secrets import token_hex
-from bot import TelegramBot
+from bot import app
 from bot.config import Telegram, Server
 from bot.modules.decorators import verify_user
 from bot.modules.telegram import send_message, filter_files
 from bot.modules.static import *
 
-@TelegramBot.on(NewMessage(incoming=True, func=filter_files))
+@app.on_message(filters.private & filters.incoming & filters.create(filter_files))
 @verify_user(private=True)
-async def user_file_handler(event: NewMessage.Event | Message):
+async def user_file_handler(client, message: Message):
     secret_code = token_hex(Telegram.SECRET_CODE_LENGTH)
-    event.message.text = f'`{secret_code}`'
-    message = await send_message(event.message)
-    message_id = message.id
+    message.caption = f"`{secret_code}`"
+    sent_msg = await send_message(message)
+    message_id = sent_msg.id
 
     dl_link = f'{Server.BASE_URL}/dl/{message_id}?code={secret_code}'
     tg_link = f'{Server.BASE_URL}/file/{message_id}?code={secret_code}'
     deep_link = f'https://t.me/{Telegram.BOT_USERNAME}?start=file_{message_id}_{secret_code}'
 
-    if (event.document and 'video' in event.document.mime_type) or event.video:
+    if (message.document and "video" in message.document.mime_type) or message.video:
         stream_link = f'{Server.BASE_URL}/stream/{message_id}?code={secret_code}'
-        await event.reply(
-            message= MediaLinksText % {'dl_link': dl_link, 'tg_link': tg_link, 'stream_link': stream_link},
-            buttons=[
+
+        await message.reply(
+            text=MediaLinksText % {
+                'dl_link': dl_link,
+                'tg_link': tg_link,
+                'stream_link': stream_link
+            },
+            reply_markup=InlineKeyboardMarkup([
                 [
-                    Button.url('ᴅᴏᴡɴʟᴏᴀᴅ', dl_link),
-                    Button.url('sᴛʀᴇᴀᴍ', stream_link)
+                    InlineKeyboardButton("ᴅᴏᴡɴʟᴏᴀᴅ", url=dl_link),
+                    InlineKeyboardButton("sᴛʀᴇᴀᴍ", url=stream_link)
                 ],
                 [
-                    Button.url('ɢᴇᴛ ғɪʟᴇ', tg_link),
-                    Button.inline('ʀᴇᴠᴏᴋᴇ', f'rm_{message_id}_{secret_code}')
+                    InlineKeyboardButton("ɢᴇᴛ ғɪʟᴇ", url=tg_link),
+                    InlineKeyboardButton("ʀᴇᴠᴏᴋᴇ", callback_data=f"rm_{message_id}_{secret_code}")
                 ]
-            ]
+            ])
         )
     else:
-        await event.reply(
-            message=FileLinksText % {'dl_link': dl_link, 'tg_link': tg_link},
-            buttons=[
+        await message.reply(
+            text=FileLinksText % {
+                'dl_link': dl_link,
+                'tg_link': tg_link
+            },
+            reply_markup=InlineKeyboardMarkup([
                 [
-                    Button.url('ᴅᴏᴡɴʟᴏᴀᴅ', dl_link),
-                    Button.url('ɢᴇᴛ ғɪʟᴇ', tg_link)
+                    InlineKeyboardButton("ᴅᴏᴡɴʟᴏᴀᴅ", url=dl_link),
+                    InlineKeyboardButton("ɢᴇᴛ ғɪʟᴇ", url=tg_link)
                 ],
                 [
-                    Button.inline('ʀᴇᴠᴏᴋᴇ', f'rm_{message_id}_{secret_code}')
+                    InlineKeyboardButton("ʀᴇᴠᴏᴋᴇ", callback_data=f"rm_{message_id}_{secret_code}")
                 ]
-            ]
+            ])
         )
 
-@TelegramBot.on(NewMessage(incoming=True, func=filter_files, forwards=False))
+@app.on_message(filters.channel & filters.create(filter_files) & ~filters.forwarded)
 @verify_user()
-async def channel_file_handler(event: NewMessage.Event | Message):
-    if event.raw_text and '#pass' in event.raw_text:
+async def channel_file_handler(client, message: Message):
+    if message.caption and '#pass' in message.caption:
         return
-    
+
     secret_code = token_hex(Telegram.SECRET_CODE_LENGTH)
-    event.message.text = f"`{secret_code}`"
-    message = await send_message(event.message)
-    message_id = message.id
+    message.caption = f"`{secret_code}`"
+    sent_msg = await send_message(message)
+    message_id = sent_msg.id
 
     dl_link = f"{Server.BASE_URL}/dl/{message_id}?code={secret_code}"
     tg_link = f"{Server.BASE_URL}/file/{message_id}?code={secret_code}"
 
-    if (event.document and "video" in event.document.mime_type) or event.video:
+    if (message.document and "video" in message.document.mime_type) or message.video:
         stream_link = f"{Server.BASE_URL}/stream/{message_id}?code={secret_code}"
 
         try:
-            await event.edit(
-                buttons=[
-                    [Button.url("ᴅᴏᴡɴʟᴏᴀᴅ", dl_link), Button.url("sᴛʀᴇᴀᴍ", stream_link)],
-                    [Button.url("ɢᴇᴛ ғɪʟᴇ", tg_link)],
-                ]
+            await message.edit_caption(
+                caption=f"`{secret_code}`",
+                reply_markup=InlineKeyboardMarkup([
+                    [
+                        InlineKeyboardButton("ᴅᴏᴡɴʟᴏᴀᴅ", url=dl_link),
+                        InlineKeyboardButton("sᴛʀᴇᴀᴍ", url=stream_link)
+                    ],
+                    [
+                        InlineKeyboardButton("ɢᴇᴛ ғɪʟᴇ", url=tg_link)
+                    ]
+                ])
             )
-        except (
-            MessageAuthorRequiredError,
-            MessageIdInvalidError,
-            MessageNotModifiedError,
-        ):
+        except Exception:
             pass
     else:
         try:
-            await event.edit(
-                buttons=[
-                    [Button.url("ᴅᴏᴡɴʟᴏᴀᴅ", dl_link), Button.url("ɢᴇᴛ ғɪʟᴇ", tg_link)],
-                ]
+            await message.edit_caption(
+                caption=f"`{secret_code}`",
+                reply_markup=InlineKeyboardMarkup([
+                    [
+                        InlineKeyboardButton("ᴅᴏᴡɴʟᴏᴀᴅ", url=dl_link),
+                        InlineKeyboardButton("ɢᴇᴛ ғɪʟᴇ", url=tg_link)
+                    ]
+                ])
             )
-        except (
-            MessageAuthorRequiredError,
-            MessageIdInvalidError,
-            MessageNotModifiedError,
-        ):
+        except Exception:
             pass
