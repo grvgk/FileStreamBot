@@ -4,7 +4,7 @@ from pathlib import Path
 from bot.client import app  # Now imported safely
 from bot import logger
 from bot.server import server
-from pyrogram.idle import idle
+from pyrogram import idle
 
 def load_plugins():
     count = 0
