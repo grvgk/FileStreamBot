@@ -19,7 +19,7 @@ async def welcome(client, message: Message):
     )
 
 @app.on_message(filters.private & filters.command("info"))
-@verify_user(private=True)
+# @verify_user(private=True)
 async def user_info(client, message: Message):
     await message.reply(
         text=UserInfoText.format(sender=message.from_user)
