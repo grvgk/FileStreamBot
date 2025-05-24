@@ -1,6 +1,6 @@
 from pyrogram import filters
 from pyrogram.types import CallbackQuery
-from bot import app
+from bot.client import app
 from bot.modules.decorators import verify_user
 from bot.modules.static import *
 from bot.modules.telegram import get_message
