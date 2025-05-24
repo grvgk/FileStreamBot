@@ -1,7 +1,7 @@
 from pyrogram import filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from secrets import token_hex
-from bot import app
+from bot.client import app
 from bot.config import Telegram, Server
 from bot.modules.decorators import verify_user
 from bot.modules.telegram import send_message, filter_files
