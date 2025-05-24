@@ -1,6 +1,6 @@
 from pyrogram import filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-from bot import app
+from bot.client import app
 from bot.config import Telegram
 from bot.modules.static import *
 from bot.modules.decorators import verify_user
