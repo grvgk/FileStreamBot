@@ -1,6 +1,6 @@
 from quart import Blueprint, Response, request, render_template, redirect
 from .error import abort
-from bot import TelegramBot
+from bot.client import app
 from bot.config import Telegram, Server
 from math import ceil, floor
 from bot.modules.telegram import get_message, get_file_properties
