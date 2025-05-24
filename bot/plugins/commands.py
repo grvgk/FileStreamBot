@@ -4,19 +4,12 @@ from bot.client import app
 from bot.config import Telegram
 from bot.modules.static import *
 from bot.modules.decorators import verify_user
+from bot import logger
 
 @app.on_message(filters.private & filters.command("start"))
-# @verify_user(private=True)
 async def welcome(client, message: Message):
-    await message.reply(
-        text=WelcomeText % {'first_name': message.from_user.first_name},
-        reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton(
-                "ᴀᴅᴅ ᴛᴏ ᴄʜᴀɴɴᴇʟ", 
-                url=f"https://t.me/{Telegram.BOT_USERNAME}?startchannel&admin=post_messages+edit_messages+delete_messages"
-            )]
-        ])
-    )
+    logger.info(f"Received /start from {message.from_user.id}")
+    await message.reply("Bot is working!")
 
 @app.on_message(filters.private & filters.command("info"))
 # @verify_user(private=True)
