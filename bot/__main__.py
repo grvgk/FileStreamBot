@@ -1,3 +1,4 @@
+import asyncio
 from importlib import import_module
 from pathlib import Path
 from bot import TelegramBot, logger
@@ -9,14 +10,21 @@ def load_plugins():
     for path in Path('bot/plugins').rglob('*.py'):
         import_module(f'bot.plugins.{path.stem}')
         count += 1
-    logger.info(f'Loaded {count} {"plugins" if count > 1 else "plugin"}.')
+    logger.info(f'Loaded {count} {"plugins" if count != 1 else "plugin"}.')
 
-if __name__ == '__main__':
-    logger.info('initializing...')
-    TelegramBot.loop.create_task(server.serve())
-    TelegramBot.start(bot_token=Telegram.BOT_TOKEN)
-    logger.info('Telegram client is now started.')
-    logger.info('Loading bot plugins...')
+async def main():
+    logger.info("Initializing...")
+    await TelegramBot.start()
+    logger.info("Telegram bot is now started.")
+    
+    # Start the web server
+    asyncio.create_task(server.serve())
+
+    logger.info("Loading bot plugins...")
     load_plugins()
-    logger.info('Bot is now ready!')
-    TelegramBot.run_until_disconnected()
+    logger.info("Bot is now ready!")
+    
+    await TelegramBot.idle()
+
+if __name__ == "__main__":
+    asyncio.run(main())
