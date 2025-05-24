@@ -4,7 +4,7 @@ class Telegram:
     API_ID = int(env.get("TELEGRAM_API_ID", "1234"))
     API_HASH = env.get("TELEGRAM_API_HASH", "xyz")
     OWNER_ID = int(env.get("OWNER_ID", "1234"))
-    ALLOWED_USER_IDS = env.get("ALLOWED_USER_IDS", "").split()
+    ALLOWED_USER_IDS = [int(uid) for uid in env.get("ALLOWED_USER_IDS", "").split() if uid.isdigit()]
     BOT_USERNAME = env.get("TELEGRAM_BOT_USERNAME", "BotFather")
     BOT_TOKEN = env.get("TELEGRAM_BOT_TOKEN", "1234:abcd")
     CHANNEL_ID = int(env.get("TELEGRAM_CHANNEL_ID", "-1001234"))
@@ -15,7 +15,7 @@ class Server:
     BIND_ADDRESS = env.get("BIND_ADDRESS", "0.0.0.0")
     PORT = int(env.get("PORT", "8080"))
 
-# LOGGING CONFIGURATION
+# Logging configuration for both console and file
 LOGGER_CONFIG_JSON = {
     'version': 1,
     'formatters': {
